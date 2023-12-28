@@ -1,7 +1,7 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('api')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -10,9 +10,23 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post('post-http-code')
+  @Post('post-hello-world')
   postHello(): string{
     return this.appService.postHello();
   }
+
+  @Patch('patch-my-id')
+  patchHello(): string{
+    return this.appService.patchHello();
+  }
   
+  @Put('put-my-id')
+  puthHello(): string{
+    return this.appService.putHello();
+  }
+
+  @Delete('delete-my-id')
+  deleteHello(): string{
+    return this.appService.deleteHello();
+  }
 }
